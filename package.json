@@ -1,0 +1,24 @@
+{
+  "name": "stat_graph",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build" : "browserify main.js -o bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akides/stat_graph.git"
+  },
+  "author": "Aki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Akides/stat_graph/issues"
+  },
+  "homepage": "https://github.com/Akides/stat_graph#readme",
+  "dependencies": {
+    "browserify": "^17.0.0",
+    "chart.js": "^3.8.0"
+  }
+}
