@@ -18,7 +18,6 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div class="slidecontainer">
-
             <div id="s1">Sweetness: <span id="out1"></span></div>
             <input type="range" min="0" max="5" step="0.5" value="0" class="slider" id="range1">
 
@@ -33,10 +32,9 @@
 
             <div id="s5">Consistency: <span id="out5"></span></div>
             <input type="range" min="0" max="5" step="0.5" value="0" class="slider" id="range5">
-
-          </div>
-        <div>
-            <canvas id="graph"></canvas>
         </div>
+        <button onclick="saveToGraph()">Click me</button>
+
+        <canvas style="margin: 10px; padding: 10px; background-color: #042E18;" id="graph"></canvas>
     </body>
 </html>
