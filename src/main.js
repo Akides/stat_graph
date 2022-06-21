@@ -1,15 +1,34 @@
 var chart = require('chart.js');
 
+let slider1 = document.getElementById("range1");
+let output = document.getElementById("out1");
+output.innerText = slider1.value;
+
+slider1.oninput = function () {
+  output.innerHTML = this.value;
+}
+
+
 const backgroundColor = 'rgba(0,255,0,0.5)'
 
+const dataEN = [
+  'Sweetness',
+  'Astringent',
+  'Bitterness',
+  'Umami',
+  'Consistency'
+];
+
+const dataDE = [
+  'Süße',
+  'Astringenz',
+  'Bitterkeit',
+  'Umami',
+  'Konsistenz'
+];
+
 const data = {
-    labels: [
-      'Sweetness',
-      'Astrigent',
-      'Bitterness',
-      'Umami',
-      'Consistency'
-    ],
+    labels: dataEN,
     datasets: [{
       data: [1, 3.5, 4, 3, 1],
       backgroundColor: 'rgba(200, 255, 200, 0.5)', //content
