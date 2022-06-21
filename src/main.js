@@ -22,7 +22,7 @@ for (let i = 0; i < sliders.length; i++) {
 }
 
 
-const backgroundColor = 'rgba(0,255,0,0.5)'
+const backgroundColor = 'rgb(54, 100, 48)'
 
   // render chart
   let graph = constructGraph([0,0,0,0,0]);
@@ -65,7 +65,7 @@ function constructGraph(values) {
       datasets: [{
         data: values,
         backgroundColor: 'rgba(200, 255, 200, 0.3)', //content
-        borderColor: 'rgba(50, 255, 50)',  //lines
+        borderColor: 'rgba(50, 200, 50)',  //lines
         pointBackgroundColor: 'rgb(00, 255, 00)',
         pointBorderColor: 'rgb(0, 255, 0)',
         pointHoverBackgroundColor: '#fff',
@@ -99,6 +99,7 @@ function constructGraph(values) {
             pointLabels: {
               color: 'white',
               font: {
+                family: "'Lora', serif",
                 //size: 20,
                 //style: 'italic'
               }
@@ -109,7 +110,7 @@ function constructGraph(values) {
             },
             grid: {
               color: backgroundColor,
-              lineWidth: 0.8,
+              lineWidth: 0.7,
             },
             min: 0,
             max: 5,
