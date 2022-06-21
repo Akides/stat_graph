@@ -1,11 +1,24 @@
 var chart = require('chart.js');
 
-let slider1 = document.getElementById("range1");
-let output = document.getElementById("out1");
-output.innerText = slider1.value;
+let sliders = [];
+let outputs = [];
 
-slider1.oninput = function () {
-  output.innerHTML = this.value;
+for (let i = 1; i < 6; i++) {
+  sliders.push(document.getElementById('range'+i)); 
+}
+
+for (let i = 1; i < 6; i++) {
+  outputs.push(document.getElementById('out'+i));  
+}
+
+for (let i = 0; i < outputs.length; i++) {
+  outputs[i].innerText = sliders[i].value;
+}
+
+for (let i = 0; i < sliders.length; i++) {
+  sliders[i].oninput = function () {
+    outputs[i].innerHTML = this.value;
+  }
 }
 
 
