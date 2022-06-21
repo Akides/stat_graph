@@ -13451,7 +13451,7 @@ function constructGraph(values) {
       labels: dataEN,
       datasets: [{
         data: values,
-        backgroundColor: 'rgba(200, 255, 200, 0.5)', //content
+        backgroundColor: 'rgba(200, 255, 200, 0.3)', //content
         borderColor: 'rgba(50, 255, 50)',  //lines
         pointBackgroundColor: 'rgb(00, 255, 00)',
         pointBorderColor: 'rgb(0, 255, 0)',
@@ -13466,8 +13466,8 @@ function constructGraph(values) {
       options: {
         plugins: {
           legend: {
-            display: false
-          },
+            display: false,
+          }
         },
         responsive: false,
         maintainAspectRatio: true,
@@ -13483,20 +13483,29 @@ function constructGraph(values) {
         },
         scales: {
           r: {
+            pointLabels: {
+              color: 'white',
+              font: {
+                //size: 20,
+                //style: 'italic'
+              }
+            },
             angleLines: {
               display: false,
-              color: backgroundColor
+              color: backgroundColor,
             },
             grid: {
-              color: backgroundColor
+              color: backgroundColor,
+              lineWidth: 0.8,
             },
             min: 0,
             max: 5,
             ticks: {
               display: false,
               beginAtZero: false,
-              stepSize: 1
-            }
+              stepSize: 1,
+              borderWidth: 10,
+            },
           }
         }
       }
