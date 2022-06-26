@@ -25,7 +25,8 @@ for (let i = 0; i < sliders.length; i++) {
 const backgroundColor = 'rgb(54, 100, 48)'
 
   // render chart
-  let graph = constructGraph([0,0,0,0,0]);
+  let graphEN = constructGraph([0,0,0,0,0], 'EN', 'graphEN');
+  let graphDE = constructGraph([0,0,0,0,0], 'DE', 'graphDE');
 
 
 
@@ -37,12 +38,14 @@ const backgroundColor = 'rgb(54, 100, 48)'
     }
 
 
-    graph.destroy();
-    graph = constructGraph(values);
+    graphEN.destroy();
+    graphDE.destroy();
+    graphEN = constructGraph(values, 'EN', 'graphEN');
+    graphDE = constructGraph(values, 'DE', 'graphDE');
   }
 
 
-function constructGraph(values) {
+function constructGraph(values, language, canvasID) {
       
   const dataEN = [
     'Sweetness',
@@ -61,7 +64,7 @@ function constructGraph(values) {
   ];
 
   const data = {
-      labels: dataEN,
+      labels: language == 'DE' ? dataDE : dataEN,
       datasets: [{
         data: values,
         backgroundColor: 'rgba(200, 255, 200, 0.3)', //content
@@ -125,7 +128,7 @@ function constructGraph(values) {
       }
     };
     let myChart = new chart(
-      document.getElementById('graph'),
+      document.getElementById(canvasID),
       config
     );
     return myChart;
