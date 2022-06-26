@@ -34,7 +34,7 @@ const dataEN = [
 
 const dataDE = [
   'Süße',
-  'Astringenz',
+  'Adstringenz',
   'Bitterkeit',
   'Umami',
   'Konsistenz'
