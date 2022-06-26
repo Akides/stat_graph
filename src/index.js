@@ -24,45 +24,92 @@ for (let i = 0; i < sliders.length; i++) {
 
 const backgroundColor = 'rgb(54, 100, 48)'
 
-  // render chart
-  let graphEN = constructGraph([0,0,0,0,0], 'EN', 'graphEN');
-  let graphDE = constructGraph([0,0,0,0,0], 'DE', 'graphDE');
+const dataEN = [
+  'Sweetness',
+  'Astringent',
+  'Bitterness',
+  'Umami',
+  'Consistency'
+];
 
+const dataDE = [
+  'Süße',
+  'Astringenz',
+  'Bitterkeit',
+  'Umami',
+  'Konsistenz'
+];
 
-
-  window.saveToGraph = function() {
-    let values = [];
-    for (let i = 0; i < outputs.length; i++) {
-      const out = outputs[i];
-      values.push(out.innerText);
+const options = {
+  plugins: {
+    legend: {
+      display: false,
     }
-
-
-    graphEN.destroy();
-    graphDE.destroy();
-    graphEN = constructGraph(values, 'EN', 'graphEN');
-    graphDE = constructGraph(values, 'DE', 'graphDE');
+  },
+  responsive: false,
+  maintainAspectRatio: true,
+  devicePixelRatio: 5,
+  
+  elements: {
+    line: {
+      borderWidth: 1
+    },
+    point: {
+      radius: 0
+    }
+  },
+  scales: {
+    r: {
+      pointLabels: {
+        color: 'white',
+        font: {
+          family: "'Lora', serif",
+          //size: 20,
+          //style: 'italic'
+        }
+      },
+      angleLines: {
+        display: false,
+        color: backgroundColor,
+      },
+      grid: {
+        color: backgroundColor,
+        lineWidth: 0.7,
+      },
+      min: 0,
+      max: 5,
+      ticks: {
+        display: false,
+        beginAtZero: false,
+        stepSize: 1,
+        borderWidth: 10,
+      },
+    }
   }
+}
+
+  // render chart
+let graphEN = constructGraph([0,0,0,0,0], 'EN', 'graphEN');
+let graphDE = constructGraph([0,0,0,0,0], 'DE', 'graphDE');
+
+
+
+window.saveToGraph = function() {
+  let values = [];
+  for (let i = 0; i < outputs.length; i++) {
+    const out = outputs[i];
+    values.push(out.innerText);
+  }
+
+  graphEN.destroy();
+  graphDE.destroy();
+  graphEN = constructGraph(values, 'EN', 'graphEN');
+  graphDE = constructGraph(values, 'DE', 'graphDE');
+}
 
 
 function constructGraph(values, language, canvasID) {
-      
-  const dataEN = [
-    'Sweetness',
-    'Astringent',
-    'Bitterness',
-    'Umami',
-    'Consistency'
-  ];
-
-  const dataDE = [
-    'Süße',
-    'Astringenz',
-    'Bitterkeit',
-    'Umami',
-    'Konsistenz'
-  ];
-
+    
   const data = {
       labels: language == 'DE' ? dataDE : dataEN,
       datasets: [{
@@ -79,53 +126,7 @@ function constructGraph(values, language, canvasID) {
     const config = {
       type: 'radar',
       data: data,
-      options: {
-        plugins: {
-          legend: {
-            display: false,
-          }
-        },
-        responsive: false,
-        maintainAspectRatio: true,
-        devicePixelRatio: 5,
-        
-        elements: {
-          line: {
-            borderWidth: 1
-          },
-          point: {
-            radius: 0
-          }
-        },
-        scales: {
-          r: {
-            pointLabels: {
-              color: 'white',
-              font: {
-                family: "'Lora', serif",
-                //size: 20,
-                //style: 'italic'
-              }
-            },
-            angleLines: {
-              display: false,
-              color: backgroundColor,
-            },
-            grid: {
-              color: backgroundColor,
-              lineWidth: 0.7,
-            },
-            min: 0,
-            max: 5,
-            ticks: {
-              display: false,
-              beginAtZero: false,
-              stepSize: 1,
-              borderWidth: 10,
-            },
-          }
-        }
-      }
+      options: options,
     };
     let myChart = new chart(
       document.getElementById(canvasID),
